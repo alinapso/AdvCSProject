@@ -13,6 +13,15 @@ body {
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .card-signin .card-title {
   margin-bottom: 2rem;
