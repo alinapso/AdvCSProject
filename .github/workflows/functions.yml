@@ -1,4 +1,4 @@
-name: CI - Cloud
+name: CI - Functions
 
 on:
   push:
