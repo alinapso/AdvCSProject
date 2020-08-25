@@ -16,12 +16,9 @@
       crossorigin="anonymous"
     />
 
-    <link
-      rel="stylesheet"
-      href="style.css"
-    />
+    <link rel="stylesheet" href="style.css" />
 
-    <title>Login Page</title>
+    <title>Sign up</title>
   </head>
 
   <body>
@@ -31,7 +28,7 @@
           <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
               <div class="card-body">
-                <h5 class="card-title text-center">Sign In</h5>
+                <h5 class="card-title text-center">Sign Up</h5>
                 <form class="form-signin">
                   <div class="form-label-group">
                     <input
@@ -56,28 +53,29 @@
                     <label for="inputPassword">Password</label>
                   </div>
 
-                  <div class="custom-control custom-checkbox mb-3">
+                  <div class="form-label-group">
                     <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="customCheck1"
+                      type="password"
+                      id="ReinputPassword"
+                      class="form-control"
+                      placeholder="Password"
+                      required
                     />
-                    <label class="custom-control-label" for="customCheck1"
-                      >Remember password</label
-                    >
+                    <label for="ReinputPassword">Password</label>
                   </div>
+
                   <button
                     class="btn btn-lg btn-primary btn-block text-uppercase"
                     type="submit"
                   >
-                    Sign in
+                    Register
                   </button>
-                  
-                  <hr class="my-4" />
-                  <div class="mt-4">
-                    <div class="d-flex justify-content-center links">
-                      Don't have an account? <a href="Register.html" class="ml-2">Sign Up</a>
-                    </div>
+
+                  <!-- <hr class="my-4" /> -->
+                  <!-- <div class="mt-4"> -->
+                  <!-- <div class="d-flex justify-content-center links">
+                      Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+                    </div> -->
                 </form>
               </div>
             </div>
