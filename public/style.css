@@ -6,6 +6,7 @@
 body {
   background: #007bff;
   background: linear-gradient(to right, #0062e6, #33aeff);
+  padding-top: 100px;
 }
 
 .card-signin {
