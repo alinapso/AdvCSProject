@@ -14,7 +14,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/customStyle.css" />
 	
 	
   </head>
@@ -85,8 +85,8 @@
 				<div class="text">{{ convertToString(task.address) }}</div>
 				<div class="text">{{ convertToString(task.presence) }}</div>
 				<textarea style="text-align:left;" rows="4" cols="25" readonly> {{ convertToString(task.details) }} </textarea> <br><br>
-                <button v-on:click="AcceptApplication(appointment.id)">Accecpt</button>
-                <button v-on:click="RejectApplication(appointment.id)">Reject</button>
+                <button v-on:click="AcceptApplication(task.id)">Accecpt</button>
+                <button v-on:click="RejectApplication(task.id)">Reject</button>
       </div>
     </div>
   </div>
