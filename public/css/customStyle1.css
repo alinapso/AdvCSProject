@@ -1,0 +1,161 @@
+* {
+  direction: ltr;
+  text-align: left;
+}
+
+/* mini reset */
+body {
+  margin: 0;
+  background: #fafafa;
+  padding-top: 100px;
+}
+body,
+h1,
+h2,
+p,
+a,
+input {
+  color: #555;
+  font-family: Consolas, Arial;
+  text-decoration: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* header styles */
+header {
+  width: 100%;
+  padding: 20px;
+  text-align: right;
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+}
+header a {
+  margin-left: 10px;
+  border-bottom: 2px solid #ff9900;
+  padding: 4px;
+  cursor: pointer;
+}
+header a:hover {
+  background: #ff9900;
+  color: black;
+}
+
+/* content styles */
+.content {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.times-list {
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+}
+.times-list li {
+  width: 100%;
+  list-style-type: none;
+  padding: 5px;
+  margin: 0;
+}
+.job-select {
+  padding: 0px 25px;
+}
+.times-list li .time {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: center;
+  color: black;
+}
+.times-list li .time label {
+  margin: 0;
+}
+.times-list li .time.active {
+  background-color: green;
+  color: white;
+}
+.times-list li .time.disabled {
+  background-color: grey;
+  color: black;
+}
+.times-list li .time.occupaied {
+  background-color: yellow;
+  color: black;
+}
+
+
+.task {
+  display: flex;
+  justify-content: space-between;
+}
+.task button {
+  margin: 0;
+}
+.task .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-schedule-button {
+  display: inline;
+}
+#update-schedule-button {
+  display: none;
+}
+
+
+
+
+.schedule-meeting-button {
+  display: flex;
+  justify-content: center;
+}
+.error {
+  width: 100%;
+  text-align: center;
+  color: #ec2d2d;
+}
+/* form element styles */
+input {
+  display: block;
+  margin: 8px 0;
+  padding: 8px 2px;
+  border-width: 0 0 2px 0;
+  width: 100%;
+}
+select {
+  display: block;
+  margin: 8px 0;
+  padding: 8px 2px;
+
+  width: 100%;
+}
+
+textarea {
+  display: block;
+  margin: 8px 0;
+  padding: 8px 2px;
+
+  width: 100%;
+}
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #ff9900;
+  border: 0;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062e6, #33aeff);
+}
