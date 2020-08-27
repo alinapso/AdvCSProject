@@ -29,10 +29,11 @@
             <div class="card card-signin my-5">
               <div class="card-body">
                 <h5 class="card-title text-center">Sign Up</h5>
-                <form class="form-signin">
+                <form class="form-signin" action="/register" method="POST">
                   <div class="form-label-group">
                     <input
                       type="email"
+                      name="email"
                       id="inputEmail"
                       class="form-control"
                       placeholder="Email address"
@@ -45,6 +46,7 @@
                   <div class="form-label-group">
                     <input
                       type="password"
+                      name="password"
                       id="inputPassword"
                       class="form-control"
                       placeholder="Password"
@@ -56,6 +58,7 @@
                   <div class="form-label-group">
                     <input
                       type="password"
+                      name="rePassword"
                       id="ReinputPassword"
                       class="form-control"
                       placeholder="Password"
@@ -101,13 +104,9 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              successfully registered
-            </div>
+            <div class="modal-body">successfully registered</div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">
-                Close
-              </button>
+              <button type="button" class="btn btn-primary">Close</button>
             </div>
           </div>
         </div>
