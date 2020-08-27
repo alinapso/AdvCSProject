@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Requests</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/customStyle1.css" />
+  </head>
+  <body>
+  
+  
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="./imgs/logo.png" alt="" width="150" height="50" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            
+			<a class="nav-link" href="customerOrders.html">My orders</a>
+              <a class="nav-link" href="addOrders.html">Set order</a>
+              <a class="nav-link" href="./Login.html">Logout</a>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    
+
+    <section class="content" id="app">
+      <h1 style="text-align:center; ">Job type</h1>
+      <form id="schedule-meeting">
+        <div class="container">
+          <div class="row job-select">
+            <select name="jobSelect" class="jobSelect">
+              <option v-for="job in jobs" v-bind:value="job.id">
+                <div>{{ job.name }}</div>
+              </option>
+            </select>
+          </div>
+          <div class="row"></div>
+
+          <ul class="times-list row">
+            <li v-for="time in times" class="col-md-3 col-sm-6">
+              <div class="time" v-bind:id="time" v-on:click="select(time)">
+                <label class="text">{{ convertToString(time) }}</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+		
+		
+		
+		<h2 style="text-align:center; ">Fill in the details</h2>
+        <form  action=" "> 
+             <input style="text-align: left;" id="user_name" type="text" name="fname" size="25"
+                             placeholder="Full name" >
+			<input style="text-align: left;" id="Address" type="text" name="faddress" size="25"
+                             placeholder="Address" >
+            
+            <input style="text-align: left;" id="email_id" type="email" name="email" size="25"
+                              placeholder="email"> 
+            <br> 
+            <textarea style="text-align:left;" rows="4" cols="25" placeholder=" Details" id="fmessage"> 
+            </textarea> 
+            <br>
+            
+               
+         
+           <p style="text-align: left;"> My presence required<br> <br><input type="checkbox" name="presenceCheck" value="Free" id="fship">
+           
+            <br>
+            <div id="placed" class="green"></div>
+        </form> 
+		
+		
+		
+		
+		
+		
+		
+        <div class="row"><p class="error"></p></div>
+        <div class="row schedule-meeting-button">
+          <button id="add-schedule-button">Order</button>
+          <button id="update-schedule-button">Change order</button>
+        </div>
+      </form>
+        
+		
+    </section>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    
+  </body>
+</html>
