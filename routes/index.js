@@ -2,7 +2,7 @@
 var express = require("express");
 var router = express.Router();
 var helper = require("./helper.js");
-const registerRouter = require("./regitser");
+const registerRouter = require("./register");
 const User = require("../Models/User");
 
 // router.use(bodyParser.urlencoded());
