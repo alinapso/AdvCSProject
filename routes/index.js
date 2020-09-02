@@ -69,7 +69,7 @@ router.delete("/logout", (req, res) => {
 });
 
 router.get("/landing", (req, res) => {
-  res.sendFile(appDir + "/landing.html");
+  res.sendFile(appDir + "/Landing.html");
 });
 
 module.exports = router;
