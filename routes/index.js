@@ -14,7 +14,7 @@ var appDir = path.dirname(require.main.filename) + "/public";
 router.use(registerRouter);
 
 router.get("/", helper.checkAuthenticated, (req, res) => {
-  res.sendFile(appDir + "/workerOrders.html", { name: req.user.name });
+  res.sendFile(appDir + "/worker-orders.html", { name: req.user.name });
 });
 
 router.get("/login", helper.checkNotAuthenticated, (req, res) => {
