@@ -9,6 +9,7 @@ $("#register-btn").click(() => {
 	if (!allFilled(email, pass, pass2)) {
 		console.log("INSIDE ALLL FILLED");
 		textModal.innerHTML = "You must fill all the boxes";
+		$("#myModal").modal("show");
 		return;
 	}
 
