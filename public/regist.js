@@ -6,10 +6,27 @@ $("#register-btn").click(() => {
 	const textModal = document.getElementById("parModal");
 
 	console.log("EMAIL:", email, "\n PASS", pass, "\n PASS2:", pass2);
-
 	if (!allFilled(email, pass, pass2)) {
 		console.log("INSIDE ALLL FILLED");
 		textModal.innerHTML = "You must fill all the boxes";
+		return;
+	}
+
+	if (!ValidateEmail(email)) {
+		console.log("INSIDE EMAIL INVALID");
+		textModal.innerHTML = "Invalid email";
+		$("#myModal").modal("show");
+		return;
+	}
+	if (pass !== pass2) {
+		console.log("INSIDE PASSWORDS ARE NOT MATCHING");
+		textModal.innerHTML = "Password are not matching";
+		$("#myModal").modal("show");
+		return;
+	}
+	if (pass == "" || pass2 == "") {
+		console.log("Password field empty");
+		textModal.innerHTML = "Empty field";
 		$("#myModal").modal("show");
 		return;
 	}

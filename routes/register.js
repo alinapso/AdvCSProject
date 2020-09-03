@@ -14,7 +14,7 @@ router.get("/register", helper.checkNotAuthenticated, (req, res) => {
 });
 
 router.post("/register", helper.checkNotAuthenticated, async (req, res) => {
-	// console.log();
+	console.log();
 	try {
 		console.log(req.body);
 		if (!req.body.email || !req.body.password) {
