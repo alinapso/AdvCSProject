@@ -7,7 +7,6 @@ const Model = Sequelize.Model;
 class User extends Model {}
 
 User.init(
-
 	{
 		// attributes
 		id: {
@@ -41,7 +40,6 @@ User.init(
 		modelName: "user",
 		// options
 	}
-
 );
 
 module.exports = User;

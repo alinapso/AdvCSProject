@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Tasks</title>
+		<title>Requests</title>
 		<link
 			href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			rel="stylesheet"
@@ -35,8 +35,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
-						<a class="nav-link" href="./worker-orders">My tasks</a>
-						<a class="nav-link" href="./worker-profile">Profile</a>
+						<a class="nav-link" href="./client-orders.html">My orders</a>
+						<a class="nav-link" href="./client-add-orders.html">Set order</a>
 						<a class="nav-link" href="./logout">Logout</a>
 					</ul>
 				</div>
@@ -44,71 +44,86 @@
 		</nav>
 
 		<section class="content" id="app">
-			<h1>My tasks - change to a decent title</h1>
-			<div class="container">
-				<div class="row">
-					<ul class="times-list row">
-						<li v-for="task in tasks" class="col-md-12 col-sm-12">
-							<div class="time task" v-bind:id="task.id">
-								<div class="accordion" id="acc">
-									<div class="card">
-										<div class="card-header" id="headingOne">
-											<h2 class="mb-0">
-												<button
-													class="btn btn-link collapsed"
-													type="button"
-													data-toggle="collapse"
-													data-target="#collapseOne"
-													aria-expanded="false"
-													aria-controls="collapseOne"
-												>
-													<div class="text">
-														{{ convertToString(task.time) }} {{
-														task.CustomerName }}
-													</div>
-												</button>
-											</h2>
-										</div>
+			<h1 style="text-align: center">Job type</h1>
+			<form id="schedule-meeting">
+				<div class="container">
+					<div class="row job-select">
+						<select name="jobSelect" class="jobSelect">
+							<option v-for="job in jobs" v-bind:value="job.id">
+								<div>{{ job.name }}</div>
+							</option>
+						</select>
+					</div>
+					<div class="row"></div>
 
-										<div
-											id="collapseOne"
-											class="collapse"
-											aria-labelledby="headingOne"
-											data-parent="#acc"
-										>
-											<div class="card-body">
-												<div class="text">
-													{{ convertToString(task.address) }}
-												</div>
-												<div class="text">
-													{{ convertToString(task.presence) }}
-												</div>
-												<textarea
-													style="text-align: left"
-													rows="4"
-													cols="25"
-													readonly
-												>
- {{ convertToString(task.details) }} </textarea
-												>
-												<br /><br />
-												<button v-on:click="AcceptApplication(task.id)">
-													Accecpt
-												</button>
-												<button v-on:click="RejectApplication(task.id)">
-													Reject
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
+					<ul class="times-list row">
+						<li v-for="time in times" class="col-md-3 col-sm-6">
+							<div class="time" v-bind:id="time" v-on:click="select(time)">
+								<label class="text">{{ convertToString(time) }}</label>
 							</div>
 						</li>
 					</ul>
 				</div>
 
+				<h2 style="text-align: center">Fill in the details</h2>
+				<form action=" ">
+					<input
+						style="text-align: left"
+						id="user_name"
+						type="text"
+						name="fname"
+						size="25"
+						placeholder="Full name"
+					/>
+					<input
+						style="text-align: left"
+						id="Address"
+						type="text"
+						name="faddress"
+						size="25"
+						placeholder="Address"
+					/>
+
+					<input
+						style="text-align: left"
+						id="email_id"
+						type="email"
+						name="email"
+						size="25"
+						placeholder="email"
+					/>
+					<br />
+					<textarea
+						style="text-align: left"
+						rows="4"
+						cols="25"
+						placeholder=" Details"
+						id="fmessage"
+					>
+					</textarea>
+					<br />
+
+					<p style="text-align: left">
+						My presence required<br />
+						<br /><input
+							type="checkbox"
+							name="presenceCheck"
+							value="Free"
+							id="fship"
+						/>
+
+						<br />
+					</p>
+
+					<div id="placed" class="green"></div>
+				</form>
+
 				<div class="row"><p class="error"></p></div>
-			</div>
+				<div class="row schedule-meeting-button">
+					<button id="add-schedule-button">Order</button>
+					<button id="update-schedule-button">Change order</button>
+				</div>
+			</form>
 		</section>
 		<script
 			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
