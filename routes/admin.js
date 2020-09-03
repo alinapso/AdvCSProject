@@ -9,7 +9,7 @@ router.get("/admin-tasks", helper.adminOnly, (req, res) => {
 });
 
 router.get("/admin-workers", helper.adminOnly, (req, res) => {
-	res.sendFile(appDir + "/admin-workers.html", { name: req.user.name });
+	res.sendFile(appDir + "/admin-workers.html");
 });
 
 module.exports = router;

@@ -15,21 +15,22 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 function clientOnly(req, res, next) {
-	if (req.isAuthenticated() && req.user.groupID == 0) {
+	if (req.isAuthenticated() && req.user.groupID === 0) {
 		next();
 	}
 	return res.redirect("/");
 }
 
 function adminOnly(req, res, next) {
-	if (req.isAuthenticated() && req.user.groupID == 2) {
+	if (req.isAuthenticated() && req.user.groupID === 2) {
+		console.log("ADMIN ONLY TRUE CALLING NEXT");
 		next();
 	}
 	return res.redirect("/");
 }
 
 function workerOnly(req, res, next) {
-	if (req.isAuthenticated() && req.user.groupID == 1) next();
+	if (req.isAuthenticated() && req.user.groupID === 1) next();
 	return res.redirect("/");
 }
 

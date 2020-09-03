@@ -19,22 +19,19 @@ router.use(clientRouter);
 router.use(registerRouter);
 router.use(loginRouter);
 
-router.get("/landing", (req, res) => {
-	res.sendFile(appDir + "/landing.html");
-});
-
 router.get("/", helper.checkAuthenticated, (req, res) => {
 	if (req.user.groupID === 0) {
 		console.log("SHOULD DIRECT TO client");
-		res.sendFile(appDir + "/customer-orders.html");
-		return;
+		res.redirect("/client-orders");
 	} else if (req.user.groupID === 1) {
 		console.log("SHOULD DIRECT TO WORKER PAGES");
-		return;
 	}
 	console.log("SHOULD DIRECT TO ADMIN PAGES");
-	// res.sendFile(appDir + "/admin-tasks.html");
-	res.redirect("/admin-tasks");
+	return res.redirect("/admin-tasks");
+});
+
+router.get("/landing", (req, res) => {
+	res.sendFile(appDir + "/landing.html");
 });
 
 module.exports = router;
