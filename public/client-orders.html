@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Tasks</title>
+		<title>Requests</title>
 		<link
 			href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			rel="stylesheet"
@@ -35,8 +35,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ml-auto">
-						<a class="nav-link" href="./worker-orders">My tasks</a>
-						<a class="nav-link" href="./worker-profile">Profile</a>
+						<a class="nav-link" href="./client-orders.html">My orders</a>
+						<a class="nav-link" href="./client-add-orders.html">Set order</a>
 						<a class="nav-link" href="./logout">Logout</a>
 					</ul>
 				</div>
@@ -44,69 +44,23 @@
 		</nav>
 
 		<section class="content" id="app">
-			<h1>My tasks - change to a decent title</h1>
+			<h1>My orders</h1>
+
 			<div class="container">
 				<div class="row">
 					<ul class="times-list row">
 						<li v-for="task in tasks" class="col-md-12 col-sm-12">
 							<div class="time task" v-bind:id="task.id">
-								<div class="accordion" id="acc">
-									<div class="card">
-										<div class="card-header" id="headingOne">
-											<h2 class="mb-0">
-												<button
-													class="btn btn-link collapsed"
-													type="button"
-													data-toggle="collapse"
-													data-target="#collapseOne"
-													aria-expanded="false"
-													aria-controls="collapseOne"
-												>
-													<div class="text">
-														{{ convertToString(task.time) }} {{
-														task.CustomerName }}
-													</div>
-												</button>
-											</h2>
-										</div>
-
-										<div
-											id="collapseOne"
-											class="collapse"
-											aria-labelledby="headingOne"
-											data-parent="#acc"
-										>
-											<div class="card-body">
-												<div class="text">
-													{{ convertToString(task.address) }}
-												</div>
-												<div class="text">
-													{{ convertToString(task.presence) }}
-												</div>
-												<textarea
-													style="text-align: left"
-													rows="4"
-													cols="25"
-													readonly
-												>
- {{ convertToString(task.details) }} </textarea
-												>
-												<br /><br />
-												<button v-on:click="AcceptApplication(task.id)">
-													Accecpt
-												</button>
-												<button v-on:click="RejectApplication(task.id)">
-													Reject
-												</button>
-											</div>
-										</div>
-									</div>
+								<div class="text">
+									{{ task.workerName }} {{ task.status }} {{
+									convertToString(task.time) }}
 								</div>
+
+								<button v-on:click="deleteAppo(task.id)">cancal</button>
 							</div>
 						</li>
 					</ul>
 				</div>
-
 				<div class="row"><p class="error"></p></div>
 			</div>
 		</section>

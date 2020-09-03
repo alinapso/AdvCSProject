@@ -14,4 +14,29 @@ function checkNotAuthenticated(req, res, next) {
 	next();
 }
 
-module.exports = { checkAuthenticated, checkNotAuthenticated };
+function clientOnly(req, res, next) {
+	if (req.isAuthenticated() && req.user.groupID === 0) {
+		return next();
+	}
+	res.redirect("/");
+}
+
+function adminOnly(req, res, next) {
+	if (req.isAuthenticated() && req.user.groupID === 2) {
+		return next();
+	}
+	res.redirect("/");
+}
+
+function workerOnly(req, res, next) {
+	if (req.isAuthenticated() && req.user.groupID === 1) return next();
+	res.redirect("/");
+}
+
+module.exports = {
+	checkAuthenticated,
+	checkNotAuthenticated,
+	clientOnly,
+	adminOnly,
+	workerOnly,
+};
