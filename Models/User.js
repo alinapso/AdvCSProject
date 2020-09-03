@@ -23,11 +23,11 @@ User.init(
     },
     firstName: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     familyName: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     groupID: {
       type: Sequelize.INTEGER,
