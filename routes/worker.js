@@ -9,12 +9,12 @@ var appDir = path.dirname(require.main.filename) + "/public";
 // 	res.sendFile(appDir + "/worker-orders.html");
 // });
 
-router.get("/worker-orders", helper.clientOnly, (req, res) => {
+router.get("/worker-orders", helper.workerOnly, (req, res) => {
 	res.sendFile(appDir + "/worker-orders.html");
 });
 
-router.get("/worker-profiles", helper.clientOnly, (req, res) => {
-	res.sendFile(appDir + "/customer-workers.html");
+router.get("/worker-profile", helper.workerOnly, (req, res) => {
+	res.sendFile(appDir + "/worker-profile.html");
 });
 
 module.exports = router;
