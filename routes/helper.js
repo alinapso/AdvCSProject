@@ -23,7 +23,6 @@ function clientOnly(req, res, next) {
 
 function adminOnly(req, res, next) {
 	if (req.isAuthenticated() && req.user.groupID === 2) {
-		console.log("ADMIN ONLY TRUE CALLING NEXT");
 		next();
 	}
 	return res.redirect("/");

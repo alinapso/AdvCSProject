@@ -5,6 +5,7 @@ const registerRouter = require("./register");
 const loginRouter = require("./login");
 const adminRouter = require("./admin");
 const clientRouter = require("./client");
+const workerRouter = require("./worker");
 
 var path = require("path");
 var appDir = path.dirname(require.main.filename) + "/public";
@@ -14,6 +15,7 @@ router.get("/logout", helper.checkAuthenticated, (req, res) => {
 	res.redirect("/login");
 });
 
+router.use(workerRouter);
 router.use(adminRouter);
 router.use(clientRouter);
 router.use(registerRouter);
@@ -22,9 +24,10 @@ router.use(loginRouter);
 router.get("/", helper.checkAuthenticated, (req, res) => {
 	if (req.user.groupID === 0) {
 		console.log("SHOULD DIRECT TO client");
-		res.redirect("/client-orders");
+		return res.redirect("/client-orders");
 	} else if (req.user.groupID === 1) {
 		console.log("SHOULD DIRECT TO WORKER PAGES");
+		return res.redirect("/worker-orders");
 	}
 	console.log("SHOULD DIRECT TO ADMIN PAGES");
 	return res.redirect("/admin-tasks");
