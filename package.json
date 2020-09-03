@@ -1,30 +1,32 @@
 {
-  "name": "korkorutz",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-flash": "0.0.2",
-    "express-session": "^1.17.1",
-    "method-override": "^3.0.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.1.0",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "sequelize": "^6.3.4",
-    "uuid": "^8.3.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+	"name": "korkorutz",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon server.js",
+		"start": "node server.js",
+		"test": "eslint ."
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.0",
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-flash": "0.0.2",
+		"express-session": "^1.17.1",
+		"method-override": "^3.0.0",
+		"mysql": "^2.18.1",
+		"mysql2": "^2.1.0",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0",
+		"sequelize": "^6.3.4",
+		"uuid": "^8.3.0"
+	},
+	"devDependencies": {
+		"eslint": "^7.8.1",
+		"nodemon": "^2.0.4"
+	}
 }

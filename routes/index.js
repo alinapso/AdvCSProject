@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 var helper = require("./helper.js");
 const registerRouter = require("./register");
-const User = require("../Models/User");
+// const User = require("../Models/User");
 
 // router.use(bodyParser.urlencoded());
 
@@ -18,17 +18,17 @@ router.get("/", helper.checkAuthenticated, (req, res) => {
 });
 
 router.get("/login", helper.checkNotAuthenticated, (req, res) => {
-  res.sendFile(appDir + "/login.html");
+	res.sendFile(appDir + "/login.html");
 });
 
 router.post(
-  "/login",
-  helper.checkNotAuthenticated,
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })
+	"/login",
+	helper.checkNotAuthenticated,
+	passport.authenticate("local", {
+		successRedirect: "/",
+		failureRedirect: "/login",
+		failureFlash: true,
+	})
 );
 
 // router.get("/register", helper.checkNotAuthenticated, (req, res) => {
@@ -64,12 +64,12 @@ router.post(
 // });
 
 router.delete("/logout", (req, res) => {
-  req.logOut();
-  res.redirect("/login");
+	req.logOut();
+	res.redirect("/login");
 });
 
 router.get("/landing", (req, res) => {
-  res.sendFile(appDir + "/landing.html");
+	res.sendFile(appDir + "/landing.html");
 });
 
 module.exports = router;
