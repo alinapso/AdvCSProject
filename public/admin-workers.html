@@ -123,7 +123,7 @@
           <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center">Create new worker</h5>
-          <form class="form-signin" action="/register" method="POST">
+          <form class="form-signin"  method="POST">
             <div class="form-label-group">
               <label for="inputEmail">Email address</label>
               <input
@@ -157,7 +157,7 @@
               <input
                 type="password"
                 name="rePassword"
-                id="ReinputPassword"
+                id="reInputPassword"
                 class="form-control"
                 placeholder="Password"
                 required
@@ -166,9 +166,8 @@
 
             <button
               class="btn btn-lg btn-primary btn-block text-uppercase"
-              type="submit"
-              data-toggle="modal"
-              data-target="#exampleModal"
+              type="button"
+              id="register-btn"
             >
               Create
             </button>
@@ -186,6 +185,36 @@
           </div>
         </div>
 
+        <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
+          <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Create new job type</h5>
+          <form class="form-signin"  method="POST">
+            <div class="form-label-group">
+              <label for="inputEmail">Job</label>
+              <input
+                type="job"
+                name="job"
+                id="inputJob"
+                class="form-control"
+                placeholder="Job type's name"
+                required
+              />
+              
+            </div>
+
+            <button
+              class="btn btn-lg btn-primary btn-block text-uppercase"
+              type="button"
+              id="job-btn"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
 
 
 
@@ -194,22 +223,22 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body">
+              <p id="parModal">Passwords are not matching!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     <!-- /.container -->
@@ -231,5 +260,7 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script type ="text/javascript" src="./js/admin/worker.js"></script>
+
   </body>
 </html>

@@ -29,7 +29,9 @@ function adminOnly(req, res, next) {
 }
 
 function workerOnly(req, res, next) {
-	if (req.isAuthenticated() && req.user.groupID === 1) return next();
+	if (req.isAuthenticated() && req.user.groupID === 1) {
+		return next();
+	}
 	res.redirect("/");
 }
 
