@@ -100,3 +100,42 @@ function allFilled(...args) {
 	console.log("returning FALSE", temp);
 	return temp;
 }
+
+
+
+$("#job-btn").click(() => {
+	const textModal = document.getElementById("parModal");
+	const jobName2 = String($("#inputJob").val());
+	if(jobName2 == ""){
+		console.log("Field is empty");
+		textModal.innerHTML = "Field is empty";
+		$("#myModal").modal("show");
+		return;
+	}
+	const body = JSON.stringify({
+		jobName: jobName2,
+	});
+	console.log("type of body: ", typeof body);
+
+	fetch('/admin', {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: body,
+	})
+		.then((response) => {
+			
+		console.log(body);
+			return response;
+		})
+		.then((responseJson) => {
+			console.log("RESPONSE:", responseJson);
+			// if (responseJson.redirected) {
+			// 	window.location.replace(responseJson.url);
+			// }
+		})
+		.catch((error) => {
+			console.log("ERROR:", error);
+		});
+});
