@@ -21,7 +21,7 @@ router.post("/register", helper.checkNotAuthenticated, async (req, res) => {
       return res.sendStatus(400);
     }
     try {
-      const users2 = User.build({
+      const users2 = User.create({
         email: req.body.email,
         password: req.body.password, //hashedPassword,
         groupID: 0,
