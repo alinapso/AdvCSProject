@@ -6,7 +6,7 @@ const User = require("../Models/User");
 const Group = require("../Models/Group");
 const Task = require("../Models/Tasks");
 const { Op } = require("sequelize");
-router.get("/groups", async (req, res) => {
+router.get("/groups", helper.checkAuthenticated, async (req, res) => {
   const result = await Group.findAll({ where: { id: { [Op.gt]: 1 } } });
   return res.json(result);
 });
