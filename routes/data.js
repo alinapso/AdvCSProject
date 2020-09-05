@@ -11,4 +11,9 @@ router.get("/groups", helper.checkAuthenticated, async (req, res) => {
   return res.json(result);
 });
 
+router.get("/client/tasks", helper.checkAuthenticated, async (req, res) => {
+  const result = await Task.findAll({ where: { clientID: req.user.id } });
+  return res.json(result);
+});
+
 module.exports = router;

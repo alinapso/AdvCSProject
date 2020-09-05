@@ -50,18 +50,7 @@
 
       <div class="container">
         <div class="row">
-          <ul class="times-list row">
-            <li v-for="task in tasks" class="col-md-12 col-sm-12">
-              <div class="time task" v-bind:id="task.id">
-                <div class="text">
-                  {{ task.workerName }} {{ task.status }} {{
-                  convertToString(task.time) }}
-                </div>
-
-                <button v-on:click="deleteAppo(task.id)">cancal</button>
-              </div>
-            </li>
-          </ul>
+          <ul class="times-list row" id="tasksList"></ul>
         </div>
         <div class="row"><p class="error"></p></div>
       </div>
@@ -81,5 +70,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
+    <script src="js/client-view.js"></script>
   </body>
 </html>

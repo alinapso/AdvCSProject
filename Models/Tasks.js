@@ -37,6 +37,10 @@ Tasks.init(
       type: Sequelize.INTEGER,
       allowNull: false,
     },
+    status: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,

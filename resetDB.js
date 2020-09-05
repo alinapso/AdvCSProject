@@ -34,6 +34,14 @@ sequelize.sync({ force: true }).then(() => {
       password: "garden", //hashedPassword,
       groupID: 3,
     });
+    Task.create({
+      clientID: 3,
+      workerID: 0,
+      details: "Fix this shit!",
+      presence: false,
+      groupID: 3,
+      status: 0,
+    });
   } catch (err) {
     console.log(err);
   }
