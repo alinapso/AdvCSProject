@@ -6,7 +6,7 @@ const loginRouter = require("./login");
 const adminRouter = require("./admin");
 const clientRouter = require("./client");
 const workerRouter = require("./worker");
-
+const dataRouter = require("./data");
 var path = require("path");
 var appDir = path.dirname(require.main.filename) + "/public";
 
@@ -20,6 +20,7 @@ router.use(adminRouter);
 router.use(clientRouter);
 router.use(registerRouter);
 router.use(loginRouter);
+router.use("/data", dataRouter);
 
 router.get("/", helper.checkAuthenticated, (req, res) => {
   if (req.user.groupID === 0) {
