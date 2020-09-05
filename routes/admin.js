@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 var helper = require("./helper.js");
 var path = require("path");
-const { adminOnly } = require("./helper.js");
+//const { adminOnly } = require("./helper.js");
 const User = require("../Models/User");
 const Group = require("../Models/Group");
 const Task = require("../Models/Tasks");
 
 var appDir = path.dirname(require.main.filename) + "/public";
 
-router.get("/admin-tasks", adminOnly, (req, res) => {
+router.get("/admin-tasks", helper.adminOnly, (req, res) => {
   return res.sendFile(appDir + "/admin-tasks.html");
 });
 

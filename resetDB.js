@@ -8,9 +8,6 @@ sequelize.sync({ force: true }).then(() => {
     const g1 = Group.create({
       name: "Admin",
     });
-    const g2 = Group.create({
-      name: "Users",
-    });
     const g3 = Group.create({
       name: "electric",
     });
@@ -25,17 +22,17 @@ sequelize.sync({ force: true }).then(() => {
     User.create({
       email: "user@user.com",
       password: "user", //hashedPassword,
-      groupID: 2,
+      groupID: 0,
     });
     User.create({
       email: "electric@worker.com",
       password: "electric", //hashedPassword,
-      groupID: 3,
+      groupID: 2,
     });
     User.create({
       email: "garden@worker.com",
       password: "garden", //hashedPassword,
-      groupID: 4,
+      groupID: 3,
     });
   } catch (err) {
     console.log(err);
