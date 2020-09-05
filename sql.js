@@ -13,4 +13,3 @@ const sequelize = new Sequelize(
 );
 //if you want to restart run in console "npm run resetdb"
 module.exports = sequelize;
-s;
