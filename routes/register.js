@@ -26,7 +26,7 @@ router.post("/register", helper.checkNotAuthenticated, async (req, res) => {
         password: req.body.password, //hashedPassword,
         groupID: 0,
       });
-      await users2.save();
+      //await users2.save();
       // res.redirect("/login");
       console.log("SUCCSEFULLY ADDED NEW USER ");
 
