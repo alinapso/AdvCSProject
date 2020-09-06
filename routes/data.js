@@ -19,7 +19,7 @@ router.get("/client/tasks", helper.checkAuthenticated, async (req, res) => {
 });
 router.get("/users/getall", helper.adminOnly, async (req, res) => {
   const result = await sequelize.query(
-    "SELECT users.id,users.email,users.firstName,users.familyName,groups.name as groupname from users inner join groups on users.groupID = groups.name;",
+    "SELECT users.id,users.email,users.firstName,users.familyName,groups.name as groupname from users inner join groups on users.groupID = groups.id where groups.id > 1;",
     { type: QueryTypes.SELECT }
   );
   console.log(result);
