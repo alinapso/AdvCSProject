@@ -64,7 +64,7 @@ router.post("/admin-workers", helper.adminOnly, async (req, res) => {
 				id: Date.now().toString(),
 				email: req.body.email,
 				password: req.body.password,
-				groupID: 1,
+				groupID: req.body.groupID,
 			});
 			await users2.save();
 			console.log("SUCCSEFULLY ADDED NEW WORKER ");
