@@ -61,7 +61,6 @@ router.post("/admin-workers", helper.adminOnly, async (req, res) => {
 		}
 		try {
 			const users2 = User.build({
-				id: Date.now().toString(),
 				email: req.body.email,
 				password: req.body.password,
 				groupID: req.body.groupID,
