@@ -101,23 +101,22 @@ function allFilled(...args) {
 	return temp;
 }
 
-
-
 $("#job-btn").click(() => {
 	const textModal = document.getElementById("parModal");
-	const jobName2 = String($("#inputJob").val());
-	if(jobName2 == ""){
+	const headerModal = document.getElementById("hModal");
+	const jobName2 = String($("#inputJob").val()).trim();
+	if (jobName2 == "") {
 		console.log("Field is empty");
 		textModal.innerHTML = "Field is empty";
 		$("#myModal").modal("show");
 		return;
 	}
 	const body = JSON.stringify({
-		jobName: jobName2,
+		name: jobName2,
 	});
 	console.log("type of body: ", typeof body);
 
-	fetch('/admin', {
+	fetch("/admin-workers/create-job-type", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -125,15 +124,18 @@ $("#job-btn").click(() => {
 		body: body,
 	})
 		.then((response) => {
-			
-		console.log(body);
-			return response;
+			console.log("BODY: ", body);
+			console.log("RESPONSE:", response);
+			if (response.status === 200) {
+				headerModal.innerHTML = "SUCCESS";
+			} else {
+				headerModal.innerHTML = "ERROR";
+			}
+			return response.json();
 		})
 		.then((responseJson) => {
-			console.log("RESPONSE:", responseJson);
-			// if (responseJson.redirected) {
-			// 	window.location.replace(responseJson.url);
-			// }
+			textModal.innerHTML = responseJson.msg;
+			$("#myModal").modal("show");
 		})
 		.catch((error) => {
 			console.log("ERROR:", error);
