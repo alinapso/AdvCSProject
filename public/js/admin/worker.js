@@ -1,25 +1,51 @@
-fetch("/admin-workers/get-workers")
+fetch("/data/users/get-workers")
 	.then((response) => {
 		return response.json();
 	})
 	.then((data) => {
 		console.log(data);
 
-		// var list = document.getElementById("tasksList");
-		// for (let i = 0; i < data.length; i++) {
-		// 	list.innerHTML +=
-		// 		"<li class='col-md-12 col-sm-12'>" +
-		// 		"  <div class='time task' id='task.id'>" +
-		// 		` <div class='text'>${data[i].clientID} ${data[i].details} ${data[i].createdAt}</div>` +
-		// 		"<button>cancal</button>" +
-		// 		" </div>" +
-		// 		"</li>";
-		// }
+		var list = document.getElementById("workerList");
+		for (let i = 0; i < data.length; i++) {
+			list.innerHTML +=
+				"<li class='col-md-12 col-sm-12'>" +
+				"  <div class='time task' id='task.id'>" +
+				` <div class='text'>email:${data[i].email} type:${data[i].groupname}</div>` +
+				`<button onclick='onClickBtn(${data[i].id})' >delete</button>` +
+				" </div>" +
+				"</li>";
+		}
 	})
 	.catch((err) => {
 		console.log(err);
 		// Do something for an error here
 	});
+
+fetch("/data/groups")
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+		console.log(data);
+		var select = document.getElementById("groupsOptions");
+
+		for (let i = 0; i < data.length; i++) {
+			console.log(data[i]);
+			let option = document.createElement("option");
+			option.text = data[i].name;
+			option.value = data[i].id;
+			select.add(option);
+		}
+	})
+	.catch((err) => {
+		console.log(err);
+		// Do something for an error here
+	});
+
+// eslint-disable-next-line no-unused-vars
+function onClickBtn(id) {
+	console.log("CLICKED ITEM WITH ID :", id);
+}
 
 $("#register-btn").click(() => {
 	// const email = $("#inputEmail");
@@ -75,11 +101,18 @@ $("#register-btn").click(() => {
 	}
 
 	console.log("REACHED END OF THE FUNC");
+	const sel = document.getElementById("groupsOptions");
+	const opt = sel.options[sel.selectedIndex];
+
+	console.log("OPT: ", opt);
+
+	// return;
 
 	const body = JSON.stringify({
 		email: email,
 		password: pass,
 		rePassword: pass2,
+		groupID: opt.value,
 	});
 	console.log("type of body: ", typeof body);
 
