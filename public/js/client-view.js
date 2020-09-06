@@ -4,7 +4,6 @@ fetch("http://localhost:3000/data/client/tasks")
 	})
 	.then((data) => {
 		console.log(data);
-
 		var list = document.getElementById("tasksList");
 		for (let i = 0; i < data.length; i++) {
 			list.innerHTML +=

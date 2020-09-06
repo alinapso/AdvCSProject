@@ -37,7 +37,7 @@ sequelize.sync({ force: true }).then(() => {
 		});
 		Task.create({
 			clientID: 3,
-			workerID: 0,
+			address: "ma palce",
 			details: "Fix this shit!",
 			presence: false,
 			groupID: 3,
