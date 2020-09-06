@@ -10,27 +10,23 @@ router.get("/client-orders", helper.clientOnly, (req, res) => {
 	return res.sendFile(appDir + "/client-orders.html");
 });
 
-router.get("/client-add-orders", helper.clientOnly, (req, res) => {
-	return res.sendFile(appDir + "/client-add-orders.html");
-});
-
 router.post(
 	"/client-add-orders/add-order",
 	helper.clientOnly,
 	async (req, res) => {
 		try {
 			try {
-				console.log("RES: ", req);
+				console.log("RES USER: ", req.user.id);
 				console.log("res.body : ", req.body);
 				// eslint-disable-next-line no-unused-vars
-				// const task = await Tasks.create({
-				//   clientID: req.body.name,
-				//   clientID: email,
-				//   address: address,
-				//   details: details,
-				//   presence: false,
-				//   groupID: opt.value,
-				// });
+				const task = await Tasks.create({
+					clientID: req.user.id,
+					// clientID: email,
+					address: req.body.address,
+					details: req.body.details,
+					presence: req.body.presence,
+					groupID: req.body.groupID,
+				});
 				console.log("SUCCSEFULLY ADDED NEW Task ");
 
 				return res.send(200).send({ msg: "SUCCEFULY added issue" });
@@ -43,5 +39,9 @@ router.post(
 		}
 	}
 );
+
+router.get("/client-add-orders", helper.clientOnly, (req, res) => {
+	return res.sendFile(appDir + "/client-add-orders.html");
+});
 
 module.exports = router;

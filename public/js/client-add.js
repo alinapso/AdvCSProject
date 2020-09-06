@@ -26,6 +26,7 @@ $("#btn-order").click(() => {
 	const address = String($("#address").val());
 	const details = String($("#details").val());
 	const textModal = document.getElementById("parModal");
+	const cb = document.getElementById("cb-pressence").checked;
 
 	console.log("EMAIL:", email, "\n ADDRESS", address, "\n DETAILS:", details);
 	// if (!allFilled(email, name, address, details)) {
@@ -45,9 +46,10 @@ $("#btn-order").click(() => {
 		clientID: email,
 		address: address,
 		details: details,
-		presence: false,
+		presence: cb,
 		groupID: opt.value,
 	});
+	console.log("BODY: ", body);
 	console.log("type of body: ", typeof body);
 
 	fetch("/client-add-orders/add-order", {
