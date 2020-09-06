@@ -6,9 +6,15 @@ var path = require("path");
 //const { adminOnly } = require("./helper.js");
 const User = require("../Models/User");
 const Group = require("../Models/Group");
+const { Op } = require("sequelize");
 // const Task = require("../Models/Tasks");
 
 var appDir = path.dirname(require.main.filename) + "/public";
+
+router.get("/admin-workers/get-workers", helper.adminOnly, async (req, res) => {
+	const result = await User.findAll({ where: { groupID: { [Op.gt]: 1 } } });
+	return res.json(result);
+});
 
 router.post(
 	"/admin-workers/create-job-type",
@@ -27,7 +33,6 @@ router.post(
 					const user = await Group.create({
 						name: req.body.name,
 					});
-
 					console.log("SUCCSEFULLY ADDED NEW JOB ");
 
 					return res.send(200).send({ msg: "SUCCEFULY added new type" });
