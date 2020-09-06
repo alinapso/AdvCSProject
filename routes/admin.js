@@ -11,11 +11,6 @@ const { Op } = require("sequelize");
 
 var appDir = path.dirname(require.main.filename) + "/public";
 
-router.get("/admin-workers/get-workers", helper.adminOnly, async (req, res) => {
-	const result = await User.findAll({ where: { groupID: { [Op.gt]: 1 } } });
-	return res.json(result);
-});
-
 router.post(
 	"/admin-workers/create-job-type",
 	helper.adminOnly,
