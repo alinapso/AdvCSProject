@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 fetch("/data/users/get-workers")
 	.then((response) => {
 		return response.json();

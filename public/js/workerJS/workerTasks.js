@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 fetch("/data/users/worker/tasks")
 	.then((response) => {
 		return response.json();
@@ -51,8 +52,7 @@ fetch("/data/users/workerEmail")
 		// Do something for an error here
 	});
 
-
-    fetch("/data/worker/presonal-tasks")
+fetch("/data/worker/presonal-tasks")
 	.then((response) => {
 		return response.json();
 	})
@@ -60,13 +60,15 @@ fetch("/data/users/workerEmail")
 		console.log(data);
 		var list = document.getElementById("taskList2");
 		for (let i = 0; i < data.length; i++) {
-            if(data[i].status === 2) continue;
+			if (data[i].status === 2) continue;
 			list.innerHTML +=
 				' <div class="card">' +
 				`<div class="card-header" id ="${data[i].id}">` +
 				' <h2 class="mb-0">' +
 				` <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${data[i].id}" aria-expanded="false" aria-controls="collapse${data[i].id}">` +
-				`Email: ${data[i].email} 	Address: ${data[i].address} Status: ${getStatus(data[i].status)}` +
+				`Email: ${data[i].email} 	Address: ${
+					data[i].address
+				} Status: ${getStatus(data[i].status)}` +
 				` </button>` +
 				`</h2>` +
 				`</div>` +
@@ -85,48 +87,46 @@ fetch("/data/users/workerEmail")
 	.catch((err) => {
 		console.log(err);
 		// Do something for an error here
-    });
-    // status 0 = sent, 1 in progress, 2 finished
-    function getStatus(status) {
-        if (status === 0) return "sent";
-        if (status === 1) return "on progress";
-        return "fixed";
-    }
-    function updateTask(statusTask,taskID2){
-        console.log("THIS IS TASK ID MY FRIEND LOOK AT IT NOW HERE ->" + taskID2);
-        if(statusTask == 0){
-            statusTask = 1;
-            
-            
-        } else if(statusTask == 1){
-            statusTask = 2;
-        }
+	});
+// status 0 = sent, 1 in progress, 2 finished
+function getStatus(status) {
+	if (status === 0) return "sent";
+	if (status === 1) return "on progress";
+	return "fixed";
+}
+// eslint-disable-next-line no-unused-vars
+function updateTask(statusTask, taskID2) {
+	console.log("THIS IS TASK ID MY FRIEND LOOK AT IT NOW HERE ->" + taskID2);
+	if (statusTask == 0) {
+		statusTask = 1;
+	} else if (statusTask == 1) {
+		statusTask = 2;
+	}
 
+	const body = JSON.stringify({
+		status: statusTask,
+		taskID: taskID2,
+	});
+	console.log("type of body: ", typeof body);
 
-        const body = JSON.stringify({
-            status: statusTask,  
-            taskID: taskID2
-        });
-        console.log("type of body: ", typeof body);
-    
-        fetch("/worker-tasks/update-task", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: body,
-        })
-            .then((response) => {
-                return response;
-            })
-            .then((responseJson) => {
-                console.log("RESPONSE:", responseJson);
-                // if (responseJson.redirected) {
-                //     window.location.replace(responseJson.url);
-                // }
-                location.reload();
-            })
-            .catch((error) => {
-                console.log("ERROR:", error);
-            });
-    }
+	fetch("/worker-tasks/update-task", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: body,
+	})
+		.then((response) => {
+			return response;
+		})
+		.then((responseJson) => {
+			console.log("RESPONSE:", responseJson);
+			// if (responseJson.redirected) {
+			//     window.location.replace(responseJson.url);
+			// }
+			location.reload();
+		})
+		.catch((error) => {
+			console.log("ERROR:", error);
+		});
+}

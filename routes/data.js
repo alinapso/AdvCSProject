@@ -7,7 +7,7 @@ const Group = require("../Models/Group");
 const Task = require("../Models/Tasks");
 var sequelize = require("../sql.js");
 const { Op, QueryTypes } = require("sequelize");
-const Tasks = require("../Models/Tasks");
+// const Tasks = require("../Models/Tasks");
 
 router.get("/groups", helper.checkAuthenticated, async (req, res) => {
 	const result = await Group.findAll({ where: { id: { [Op.gt]: 1 } } });
@@ -20,11 +20,6 @@ router.get("/tasks", helper.checkAuthenticated, async (req, res) => {
 });
 
 router.get("/client/tasks", helper.checkAuthenticated, async (req, res) => {
-	// const result = await Task.findAll({ where: { clientID: req.user.id } });
-	// const result = await sequelize.query(
-	// 	`Select users.email ,tasks.id, tasks.details from tasks left join users on tasks.workerID = users.id where tasks.clientId = ${req.user.id}`,
-	// 	{ type: QueryTypes.SELECT }
-	// );
 	const result = await sequelize.query(
 		`Select users.email ,tasks.id, tasks.details,tasks.status,tasks.address,tasks.presence ,groups.name from  tasks inner join groups  on groups.id = tasks.groupID left join users on  tasks.workerID = users.id where tasks.clientId =  ${req.user.id}`,
 		{ type: QueryTypes.SELECT }
@@ -37,20 +32,10 @@ router.get(
 	"/users/worker/tasks",
 	helper.checkAuthenticated,
 	async (req, res) => {
-		console.log("we here bby");
-		// const result = await Task.findAll({ where: { [Op.and]: [{[Op.ne]:  req.user.id} , { groupID: req.user.groupID }] }});
-		// result = await result.findAll(where: )
-		//const result = await Task.findAll({ where: { groupID: req.user.groupID } });
-		//const result2 = await Task.findAll({where: {workerID: {[Op.ne]:  req.user.id}.id}});
-		// const result = await Task.findAll({
-		// 	where: {
-		// 		[Op.and]: [{ [Op.ne]: req.user.id }.id, { groupID: req.user.groupID }],
-		// 	},
-		// }); //incase of trouble use line 32.
 		const result = await sequelize.query(
-            `Select users.email ,tasks.id, tasks.details,tasks.status,tasks.address,tasks.presence, tasks.clientID ,groups.name from  tasks inner join groups  on groups.id = tasks.groupID left join users on  tasks.clientID = users.id where tasks.groupID =  ${req.user.groupID} AND  tasks.status = 0`,
-            { type: QueryTypes.SELECT }
-        );
+			`Select users.email ,tasks.id, tasks.details,tasks.status,tasks.address,tasks.presence, tasks.clientID ,groups.name from  tasks inner join groups  on groups.id = tasks.groupID left join users on  tasks.clientID = users.id where tasks.groupID =  ${req.user.groupID} AND  tasks.status = 0`,
+			{ type: QueryTypes.SELECT }
+		);
 		return res.json(result);
 	}
 );
@@ -86,14 +71,16 @@ router.get(
 	}
 );
 
-
-router.get("/worker/presonal-tasks", helper.checkAuthenticated, async (req, res) => {
-    const result = await sequelize.query(
-		`Select users.email ,tasks.id, tasks.details,tasks.status,tasks.address,tasks.presence,tasks.clientID ,groups.name from  tasks inner join groups  on groups.id = tasks.groupID left join users on  tasks.clientID = users.id where tasks.workerID=  ${req.user.id}`,
-		{ type: QueryTypes.SELECT }
-	);
-    return res.json(result);
-});
-
+router.get(
+	"/worker/presonal-tasks",
+	helper.checkAuthenticated,
+	async (req, res) => {
+		const result = await sequelize.query(
+			`Select users.email ,tasks.id, tasks.details,tasks.status,tasks.address,tasks.presence,tasks.clientID ,groups.name from  tasks inner join groups  on groups.id = tasks.groupID left join users on  tasks.clientID = users.id where tasks.workerID=  ${req.user.id}`,
+			{ type: QueryTypes.SELECT }
+		);
+		return res.json(result);
+	}
+);
 
 module.exports = router;
