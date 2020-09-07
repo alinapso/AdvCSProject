@@ -44,63 +44,15 @@
 		</nav>
 
 		<section class="content" id="app">
-			<h1>My tasks - change to a decent title</h1>
+			<h1>New tasks</h1>
 			<div class="container">
 				<div class="row">
 					<ul class="times-list row">
 						<li v-for="task in tasks" class="col-md-12 col-sm-12">
 							<div class="time task" v-bind:id="task.id">
-								<div class="accordion" id="acc">
-									<div class="card">
-										<div class="card-header" id="headingOne">
-											<h2 class="mb-0">
-												<button
-													class="btn btn-link collapsed"
-													type="button"
-													data-toggle="collapse"
-													data-target="#collapseOne"
-													aria-expanded="false"
-													aria-controls="collapseOne"
-												>
-													<div class="text">
-														{{ convertToString(task.time) }} {{
-														task.CustomerName }}
-													</div>
-												</button>
-											</h2>
-										</div>
+								<div class="accordion" id="taskList">
+									
 
-										<div
-											id="collapseOne"
-											class="collapse"
-											aria-labelledby="headingOne"
-											data-parent="#acc"
-										>
-											<div class="card-body">
-												<div class="text">
-													{{ convertToString(task.address) }}
-												</div>
-												<div class="text">
-													{{ convertToString(task.presence) }}
-												</div>
-												<textarea
-													style="text-align: left"
-													rows="4"
-													cols="25"
-													readonly
-												>
- {{ convertToString(task.details) }} </textarea
-												>
-												<br /><br />
-												<button v-on:click="AcceptApplication(task.id)">
-													Accecpt
-												</button>
-												<button v-on:click="RejectApplication(task.id)">
-													Reject
-												</button>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</li>
@@ -109,6 +61,10 @@
 
 				<div class="row"><p class="error"></p></div>
 			</div>
+
+				<div class="row"><p class="error"></p></div>
+			</div>
+
 		</section>
 		<script
 			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -125,5 +81,6 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"
 		></script>
+		<script type ="text/javascript" src="./js/workerJS/workerTasks.js"></script>
 	</body>
 </html>
