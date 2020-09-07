@@ -156,6 +156,9 @@ button {
 	font-family: inherit;
 	cursor: pointer;
 }
+button:hover {
+	background-color: rgb(230, 88, 52);
+  }
 
 body {
 	background: #007bff;
