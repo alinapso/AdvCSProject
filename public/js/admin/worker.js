@@ -1,5 +1,3 @@
-
-
 fetch("/data/users/get-workers")
 	.then((response) => {
 		return response.json();
@@ -19,10 +17,7 @@ fetch("/data/users/get-workers")
 		// 	ui2.setAttribute('class','text');
 		// var ul4 = document.createElement('button');
 
-
-
 		for (let i = 0; i < data.length; i++) {
-			
 			// ul.textContent = `Email: ${data[i].email}	job: ${data[i].groupname}`;
 			// ui2.textContent = `Name: ${data[i].firstname} ${data[i].familyname}	ID: ${data[i].id}` ;
 			// ul4.setAttribute("onClick",`onClickBtn(${data[i].id})`);
@@ -36,31 +31,26 @@ fetch("/data/users/get-workers")
 			// console.log(ul);
 			// console.log(ui);
 			//list.innerHTML += ul.outerHTML + ui.outerHTML;
-			
-			 list.innerHTML +=	
-			' <div class="card">'+
-			 `<div class="card-header" id ="${data[i].id}">`+
-			  ' <h2 class="mb-0">'+
-				` <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${data[i].id}" aria-expanded="false" aria-controls="collapse${data[i].id}">`+
-					`Email: ${data[i].email} 	job: ${data[i].groupname}` +
-				` </button>`+
-			   `</h2>`+
-			 `</div>`+
-		 
-			 `<div id="collapse${data[i].id}" class="collapse" aria-labelledby = "${data[i].id}" data-parent="#workerList">`+
-			   `<div class="card-body">`+
 
-			   `<ul>Name: ${data[i].name} ${data[i].familyname} ID: ${data[i].id}	</ul><ul>`+
-			    					`<button  onclick='onClickBtn(${data[i].id})' >Delete</button></ul>`+
-
-
-			   `</div>`+
-			 `</div>`+
-		   `</div>`;
+			list.innerHTML +=
+				' <div class="card">' +
+				`<div class="card-header" id ="${data[i].id}">` +
+				' <h2 class="mb-0">' +
+				` <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${data[i].id}" aria-expanded="false" aria-controls="collapse${data[i].id}">` +
+				`Email: ${data[i].email} 	job: ${data[i].groupname}` +
+				` </button>` +
+				`</h2>` +
+				`</div>` +
+				`<div id="collapse${data[i].id}" class="collapse" aria-labelledby = "${data[i].id}" data-parent="#workerList">` +
+				`<div class="card-body">` +
+				`<ul>Name: ${data[i].name} ${data[i].familyname} ID: ${data[i].id}	</ul><ul>` +
+				`<button  onclick='onClickBtn(${data[i].id})' >Delete</button></ul>` +
+				`</div>` +
+				`</div>` +
+				`</div>`;
 			console.log(list);
 		}
-		list.innerHTML += '<br><br>';
-		
+		list.innerHTML += "<br><br>";
 	})
 	.catch((err) => {
 		console.log(err);
