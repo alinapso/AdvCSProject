@@ -1,20 +1,66 @@
+
+
 fetch("/data/users/get-workers")
 	.then((response) => {
 		return response.json();
 	})
 	.then((data) => {
 		console.log(data);
-
 		var list = document.getElementById("workerList");
+		// var ui = document.createElement('div');
+		// 	ui.setAttribute("class",'panel');
+		// var ul = document.createElement('button');
+		// 	ul.setAttribute("class",'accordion');
+		// 	ul.setAttribute('type','button');
+		// 	ul.setAttribute('data-toggle',"collapse");
+		// var ui1 = document.createElement('div');
+		// 	ui1.setAttribute('class','card-body');
+		// var ui2 = document.createElement('div');
+		// 	ui2.setAttribute('class','text');
+		// var ul4 = document.createElement('button');
+
+
+
 		for (let i = 0; i < data.length; i++) {
-			list.innerHTML +=
-				"<li class='col-md-12 col-sm-12'>" +
-				"  <div class='time task' id='task.id'>" +
-				` <div class='text'>email:${data[i].email} type:${data[i].groupname}</div>` +
-				`<button onclick='onClickBtn(${data[i].id})' >delete</button>` +
-				" </div>" +
-				"</li>";
+			
+			// ul.textContent = `Email: ${data[i].email}	job: ${data[i].groupname}`;
+			// ui2.textContent = `Name: ${data[i].firstname} ${data[i].familyname}	ID: ${data[i].id}` ;
+			// ul4.setAttribute("onClick",`onClickBtn(${data[i].id})`);
+			// ul4.textContent = 'Delete';
+			// ui2.appendChild(ul4);
+			// ui1.appendChild(ui2);
+			// ui.appendChild(ui1);
+			// //list.appendChild(ul);
+			//list.appendChild(ui);
+			// console.log(list);
+			// console.log(ul);
+			// console.log(ui);
+			//list.innerHTML += ul.outerHTML + ui.outerHTML;
+			
+			 list.innerHTML +=	
+			' <div class="card">'+
+			 `<div class="card-header" id ="${data[i].id}">`+
+			  ' <h2 class="mb-0">'+
+				` <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${data[i].id}" aria-expanded="false" aria-controls="collapse${data[i].id}">`+
+					`Email: ${data[i].email} 	job: ${data[i].groupname}` +
+				` </button>`+
+			   `</h2>`+
+			 `</div>`+
+		 
+			 `<div id="collapse${data[i].id}" class="collapse" aria-labelledby = "${data[i].id}" data-parent="#workerList">`+
+			   `<div class="card-body">`+
+
+			   `<ul>Name: ${data[i].name} ${data[i].familyname} ID: ${data[i].id}	</ul><ul>`+
+			    					`<button  onclick='onClickBtn(${data[i].id})' >Delete</button></ul>`+
+
+
+			   `</div>`+
+			 `</div>`+
+		   `</div>`;
+			console.log(list);
 		}
+		list.innerHTML += '<br><br>';
+		
 	})
 	.catch((err) => {
 		console.log(err);
