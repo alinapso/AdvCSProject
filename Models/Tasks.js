@@ -21,9 +21,9 @@ Tasks.init(
 			type: Sequelize.INTEGER,
 			allowNull: true,
 		},
-		time: {
+		address: {
 			type: Sequelize.STRING,
-			allowNull: true,
+			allowNull: false,
 		},
 		details: {
 			type: Sequelize.STRING,

@@ -1,9 +1,10 @@
-fetch("http://localhost:3000/data/client/tasks")
+fetch("/data/tasks")
 	.then((response) => {
 		return response.json();
 	})
 	.then((data) => {
 		console.log(data);
+
 		var list = document.getElementById("tasksList");
 		for (let i = 0; i < data.length; i++) {
 			list.innerHTML +=

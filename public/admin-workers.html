@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -57,55 +58,14 @@
     
 
 
-
-
-
-
-
-
-
-
-
     <section class="content" id="app">
-	
       <h1>Workers list - create new workers</h1>
-      <div class="container">
-        <div class="row">
-          <ul class="times-list row">
-            <li v-for="task in tasks" class="col-md-12 col-sm-12">
-              <div class="time task " v-bind:id="task.id">
-                <div class="accordion" id="acc">
-                  <div class="card">
-                    <div class="card-header" id="headingOne">
-                      <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                          <div class="text">{{ convertToString(worker.name) }}	{{ worker.jobType }}	</div> 
-                        </button>
-                      </h2>
-                    </div>
-                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#acc">
-                    <div class="card-body">
-                      <div class="text">{{ convertToString(worker.name) }}</div>
-                      <div class="text">{{ convertToString(worker.jobType) }}</div>
-                      <textarea style="text-align:left;" rows="4" cols="25" readonly> {{ convertToString(worker.detailsNotNEEDED) }} </textarea> 
-                      <br><br>
-                    </div>
-                    <button
-                      class="btn btn-lg btn-primary btn-block text-uppercase"
-                      type="submit"
-                      data-toggle="modal"
-                      data-target="#exampleModal">Delete 
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        <div>
-      </div>                 
+      
   
+      
+      <div class="accordion" id="workerList">
 
-
+      </div>
 
 
 
@@ -152,6 +112,13 @@
                 placeholder="Password"
                 required
               />
+            </div>
+            <div class="row job-select">
+              <select
+                name="jobSelect"
+                id="groupsOptions"
+                class="jobSelect"
+              ></select>
             </div>
 
             <button
@@ -251,6 +218,6 @@
       crossorigin="anonymous"
     ></script>
     <script type ="text/javascript" src="./js/admin/worker.js"></script>
-
+   
   </body>
 </html>
