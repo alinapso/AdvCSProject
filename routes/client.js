@@ -21,7 +21,6 @@ router.post(
 			// eslint-disable-next-line no-unused-vars
 			const task = await Tasks.create({
 				clientID: req.user.id,
-				// clientID: email,
 				address: req.body.address,
 				details: req.body.details,
 				presence: req.body.presence,

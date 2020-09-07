@@ -18,14 +18,28 @@ fetch("/data/groups")
 		console.log(err);
 	});
 
+fetch("/data/users/workerEmail")
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+		console.log("DATA", data);
+		const emailInput = document.getElementById("email-id");
+		emailInput.setAttribute("placeholder", `${data.email}`);
+		emailInput.setAttribute("readonly", "");
+	})
+	.catch((err) => {
+		console.log("ERROR:", err);
+	});
+
 $("#btn-order").click(() => {
-	const email = String($("#email-id").val());
+	// const email = String($("#email-id").val());
 	const address = String($("#address").val());
 	const details = String($("#details").val());
 	const textModal = document.getElementById("parModal");
 	const cb = document.getElementById("cb-pressence").checked;
 
-	console.log("EMAIL:", email, "\n ADDRESS", address, "\n DETAILS:", details);
+	console.log("\n ADDRESS", address, "\n DETAILS:", details);
 	if (!allFilled(address, details)) {
 		console.log("INSIDE ALLL FILLED");
 		textModal.innerHTML = "You must fill all the boxes";
@@ -36,7 +50,6 @@ $("#btn-order").click(() => {
 	const opt = sel.options[sel.selectedIndex];
 
 	const body = JSON.stringify({
-		clientID: email,
 		address: address,
 		details: details,
 		presence: cb,
