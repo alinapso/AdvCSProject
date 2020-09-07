@@ -18,26 +18,20 @@ router.get("/worker-profile", helper.workerOnly, (req, res) => {
 	res.sendFile(appDir + "/worker-profile.html");
 });
 
-
-
 router.post(
-    "/worker-tasks/update-task",
-    helper.workerOnly,
-    async (req, res) => {
-        try {
-            const result = await Tasks.findByPk(req.body.taskID);
+	"/worker-tasks/update-task",
+	helper.workerOnly,
+	async (req, res) => {
+		try {
+			const result = await Tasks.findByPk(req.body.taskID);
 			result.workerID = req.user.id;
-            result.status = req.body.status;
-            result.save();
-            return res.sendStatus(200);
-        } catch (err) {
-            return res.status(400).send({ msg: err });
-        }
-    }
+			result.status = req.body.status;
+			result.save();
+			return res.sendStatus(200);
+		} catch (err) {
+			return res.status(400).send({ msg: err });
+		}
+	}
 );
 
-
-
-
 module.exports = router;
-
