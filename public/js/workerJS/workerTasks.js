@@ -40,3 +40,22 @@ fetch("/data/users/worker/tasks")
 		// Do something for an error here
 	});
 
+    fetch("/data/users/workerEmail")
+	.then((response) => {
+		return response.json();
+	})
+	.then((data) => {
+        console.log("here");
+		console.log(data);
+		var list = document.getElementById("emailz");
+		list.setAttribute("placeholder",`${data.email}`)
+        list.setAttribute("readonly","");
+
+			console.log(list);
+		}
+		
+	)
+	.catch((err) => {
+		console.log(err);
+		// Do something for an error here
+	});
