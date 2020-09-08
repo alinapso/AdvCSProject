@@ -44,8 +44,7 @@ fetch("/data/users/get-workers")
 				`</div>` +
 				`<div id="collapse${data[i].id}" class="collapse" aria-labelledby = "${data[i].id}" data-parent="#workerList">` +
 				`<div class="card-body">` +
-				`<ul>Name: ${data[i].name} ${data[i].familyname} ID: ${data[i].id}	</ul><ul>` +
-				`<button  onclick='onClickBtn(${data[i].id})' >Delete</button></ul>` +
+				`<ul>Name: ${isFilled(data[i].name,data[i].familyname)}  ID: ${data[i].id}	</ul><ul>` +
 				`</div>` +
 				`</div>` +
 				`</div>`;
@@ -90,7 +89,7 @@ $("#register-btn").click(() => {
 	const pass = String($("#inputPassword").val());
 	const pass2 = String($("#reInputPassword").val());
 	const textModal = document.getElementById("parModal");
-
+	const headerModal = document.getElementById("hModal3")
 	console.log("EMAIL:", email, "\n PASS", pass, "\n PASS2:", pass2);
 	if (!allFilled(email, pass, pass2)) {
 		console.log("INSIDE ALLL FILLED");
@@ -161,14 +160,22 @@ $("#register-btn").click(() => {
 		body: body,
 	})
 		.then((response) => {
+			if (response.status != 400) {
+				console.log( "SUCCESS");
+				window.location.replace('/admin-workers');
+			} else {
+				headerModal.innerHTML = "ERROR:";
+				textModal.innerHTML = "Email taken"
+			}
 			return response;
 		})
-		.then((responseJson) => {
-			console.log("RESPONSE:", responseJson);
-			// if (responseJson.redirected) {
-			// 	window.location.replace(responseJson.url);
-			// }
-		})
+		.then((responseJson) => {	console.log("RESPONSE:", responseJson);
+		if (responseJson.redirected) {
+			window.location.replace(responseJson.url);
+		}
+		else
+			$("#myModal").modal("show");
+	})
 		.catch((error) => {
 			console.log("ERROR:", error);
 		});
@@ -234,3 +241,15 @@ $("#job-btn").click(() => {
 			console.log("ERROR:", error);
 		});
 });
+
+function isFilled(name,lastname){
+
+	if(name === undefined && lastname === undefined){
+		return "Not given";
+	} else if(name === undefined && lastname != undefined){
+		return lastname;
+	} else if(name != undefined && lastname === undefined){
+		return name;
+	}
+	return "Not given";
+}
