@@ -1,4 +1,5 @@
 $("#register-btn").click(() => {
+	const headerModal = document.getElementById("hModal2");
 	// const email = $("#inputEmail");
 	const email = String($("#inputEmail").val());
 	const pass = String($("#inputPassword").val());
@@ -9,6 +10,7 @@ $("#register-btn").click(() => {
 	if (!allFilled(email, pass, pass2)) {
 		console.log("INSIDE ALLL FILLED");
 		textModal.innerHTML = "You must fill all the boxes";
+		$("#myModal").modal("show");
 		return;
 	}
 
@@ -24,6 +26,7 @@ $("#register-btn").click(() => {
 		$("#myModal").modal("show");
 		return;
 	}
+	console.log("PASS ARE",pass,pass2);
 	if (pass == "" || pass2 == "") {
 		console.log("Password field empty");
 		textModal.innerHTML = "Empty field";
@@ -67,6 +70,13 @@ $("#register-btn").click(() => {
 		body: body,
 	})
 		.then((response) => {
+			if (response.status != 400) {
+				console.log( "SUCCESS");
+				window.location.replace('/login');
+			} else {
+				headerModal.innerHTML = "ERROR:";
+				textModal.innerHTML = "Email taken"
+			}
 			return response;
 		})
 		.then((responseJson) => {
@@ -74,10 +84,14 @@ $("#register-btn").click(() => {
 			if (responseJson.redirected) {
 				window.location.replace(responseJson.url);
 			}
+			else
+				$("#myModal").modal("show");
 		})
 		.catch((error) => {
 			console.log("ERRor", error);
 		});
+
+		
 });
 
 function ValidateEmail(mail) {
