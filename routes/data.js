@@ -71,6 +71,15 @@ router.get(
 	}
 );
 
+router.get("/users/workers", helper.checkAuthenticated, async (req, res) => {
+	const result = await sequelize.query(
+		`SELECT users.id,users.email,users.firstName,users.familyName,groups.name as groupname from users inner join groups on users.groupID = groups.id where users.id = ${req.user.id};`,
+		{ type: QueryTypes.SELECT }
+	);
+	console.log(result);
+	return res.json(result);
+});
+
 router.get(
 	"/worker/presonal-tasks",
 	helper.checkAuthenticated,
