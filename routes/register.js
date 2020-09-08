@@ -3,11 +3,9 @@ const router = express.Router();
 var helper = require("./helper.js");
 const User = require("../Models/User");
 var path = require("path");
-// const { nextTick } = require("process");
 var appDir = path.dirname(require.main.filename) + "/public";
 
-// var async  = require('express-async-await');
-// var fetch = require('node-fetch');
+
 
 router.get("/register", helper.checkNotAuthenticated, (req, res) => {
 	res.sendFile(appDir + "/register.html");
@@ -21,20 +19,21 @@ router.post("/register", helper.checkNotAuthenticated, async (req, res) => {
 			return res.sendStatus(400);
 		}
 		try {
+			if(!await User.findOne({ where: { email: req.body.email } })){
 			User.create({
 				email: req.body.email,
 				password: req.body.password, //hashedPassword,
 				groupID: 0,
 			});
-			// await users2.save();
-			// res.redirect("/login");
 			console.log("SUCCSEFULLY ADDED NEW USER ");
-
 			return res.redirect("/login");
-			//next();
+		} else{
+			console.log("ERROR ADDING NEW USER: EMAIL TAKEN");
+			return res.sendStatus(400);
+		}
 		} catch (err) {
 			console.log("ERROR ADDING NEW USER:", err);
-			return;
+			return res.sendStatus(400);
 		}
 	} catch {
 		res.redirect("/");
