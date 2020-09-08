@@ -55,11 +55,7 @@
 
             <div class="form-group">
               <label for="exampleFormControlSelect1">Service Type:</label>
-              <select class="form-control" id="serviceType">
-                <option>Plumber</option>
-                <option>Tech internet</option>
-                <option>Tech </option>
-              </select>
+              <input type="text" class="form-control" id="serviceType"> 
             </div>
 
             <div class="form-group">
@@ -75,17 +71,36 @@
             
             <div class="form-group">
               <label>Birth Date:</label>
-              <input type="date" class="form-control" id="birthdate">
+              <input type="text" class="form-control" id="idHolder">
             </div>
 
             <div class="form-group">
               <label for="exampleFormControlInput1">Email address</label>
-              <input  type="email" class="form-control" id="emailz" placeholder="name@example.com">
+              <input  type="email" class="form-control" id="emailz" placeholder="">
             </div>
            
             
           </form>
-          <button type="submit" class="btn btn-primary">Submit</button>
+            
+              <button id="btn-update">Update profile</button>
+            
+          </div>
+
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="hModal">Error</h4>
+                </div>
+                <div class="modal-body">
+                  <p id="parModal">Passwords are not matching!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
     </body>
 
@@ -106,6 +121,6 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
-    <script type ="text/javascript" src="./js/workerJS/workerTasks.js"></script>
+    <script type ="text/javascript" src="./js/workerJS/worker-profile.js"></script>
   </body>
 </html>
