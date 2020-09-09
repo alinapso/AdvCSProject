@@ -7,6 +7,7 @@ const User = require("./Models/User.js");
 // eslint-disable-next-line no-unused-vars
 function initialize(passport, getUserByEmail, getUserById) {
   const authenticateUser = async (email, password, done) => {
+    console.log("called authenticateUser");
     User.findOne({ where: { email: email } })
       .then((user) => {
         if (user == null) {
