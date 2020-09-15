@@ -1,3 +1,6 @@
+var navbar = document.getElementById("navbar");
+navbar.innerHTML += createNav("admin");
+
 /* eslint-disable quotes */
 fetch("/api/users/workers")
   .then((response) => {

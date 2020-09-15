@@ -3,8 +3,7 @@ fetch("/api/users/profile")
     return response.json();
   })
   .then((data) => {
-    console.log("here");
-    console.log(data);
+    if (data.groupname === null) data.groupname = "client";
     setupdata(
       data.email,
       data.groupname,
@@ -12,6 +11,15 @@ fetch("/api/users/profile")
       data.firstName,
       data.familyName
     );
+    var navbar = document.getElementById("navbar");
+    if (data.groupname === "Admin") {
+      navbar.innerHTML += createNav("admin");
+    }
+    if (data.groupname === "client") {
+      navbar.innerHTML += createNav("client");
+    } else {
+      navbar.innerHTML += createNav("worker");
+    }
   })
   .catch((err) => {
     console.log(err);
