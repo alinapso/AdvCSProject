@@ -7,11 +7,11 @@ var path = require("path");
 const User = require("../Models/User.js");
 var appDir = path.dirname(require.main.filename) + "/public";
 
-router.get("/", helper.workerOnly, (req, res) => {
+router.get("/", helper.checkAuthenticated, (req, res) => {
   res.sendFile(appDir + "/profile.html");
 });
 
-router.post("/update", helper.workerOnly, async (req, res) => {
+router.post("/update", helper.checkAuthenticated, async (req, res) => {
   try {
     console.log("CALLED SET PROFILE");
     const result = await User.findByPk(req.user.id);

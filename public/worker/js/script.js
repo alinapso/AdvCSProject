@@ -1,10 +1,12 @@
+var navbar = document.getElementById("navbar");
+navbar.innerHTML += createNav("worker");
+
 /* eslint-disable quotes */
 fetch("/api/tasks/")
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     var listWorker = document.getElementById("taskList");
     var listUnAssigned = document.getElementById("taskList2");
     for (let i = 0; i < data.length; i++) {

@@ -1,3 +1,6 @@
+var navbar = document.getElementById("navbar");
+navbar.innerHTML += createNav("client");
+
 fetch("/api/groups")
   .then((response) => {
     return response.json();

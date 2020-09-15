@@ -1,3 +1,6 @@
+var navbar = document.getElementById("navbar");
+navbar.innerHTML += createNav("admin");
+
 fetch("/api/tasks/")
   .then((response) => {
     return response.json();

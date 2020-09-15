@@ -1,5 +1,6 @@
-/* eslint-disable indent */
-/* eslint-disable quotes */
+var navbar = document.getElementById("navbar");
+navbar.innerHTML += createNav("client");
+
 fetch("/api/tasks/")
   .then((response) => {
     return response.json();
