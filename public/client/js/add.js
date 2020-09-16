@@ -79,9 +79,8 @@ $("#btn-order").click(() => {
 });
 
 function allFilled(...args) {
-  let temp = true;
   args.map((x) => {
-    if (!String(x)) temp = false;
+    if (!String(x)) return false;
   });
-  return temp;
+  return true;
 }
