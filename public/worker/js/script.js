@@ -10,7 +10,9 @@ fetch("/api/tasks/")
 		return response.json();
 	})
 	.then((data) => {
+		// eslint-disable-next-line no-undef
 		var listWorker = document.getElementById("taskList");
+		// eslint-disable-next-line no-undef
 		var listUnAssigned = document.getElementById("taskList2");
 		for (let i = 0; i < data.length; i++) {
 			if (data[i].workerID === 0)
@@ -92,6 +94,7 @@ function updateTask(statusTask, taskID2) {
 	});
 	console.log("type of body: ", typeof body);
 
+	// eslint-disable-next-line no-undef
 	fetch("/worker/orders/", {
 		method: "POST",
 		headers: {
@@ -107,6 +110,7 @@ function updateTask(statusTask, taskID2) {
 			// if (responseJson.redirected) {
 			//     window.location.replace(responseJson.url);
 			// }
+			// eslint-disable-next-line no-undef
 			location.reload();
 		})
 		.catch((error) => {

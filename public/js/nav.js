@@ -1,22 +1,24 @@
 function createNav(type) {
+	var items = [];
 	if (type === "admin") {
-		var items = [
+		items = [
 			{ text: "Tasks", url: "/admin/tasks" },
-			{ text: "Workers", url: "/admin/workers" },
+			{ text: "Workers List", url: "/admin/workers" },
+			{ text: "Add new Worker", url: "/admin/workers/add" },
+			{ text: "Groups list", url: "/admin/groups/" },
+			{ text: "add new Group", url: "/admin/groups/add" },
 		];
-		return createFromList(items);
 	}
 	if (type === "worker") {
-		var items = [{ text: "My tasks", url: "/worker/orders" }];
-		return createFromList(items);
+		items = [{ text: "My tasks", url: "/worker/orders" }];
 	}
 	if (type === "client") {
-		var items = [
+		items = [
 			{ text: "My Orders", url: "/client/orders" },
 			{ text: "New Order", url: "/client/add" },
 		];
-		return createFromList(items);
 	}
+	return createFromList(items);
 }
 function createFromList(list) {
 	var lis = [];
