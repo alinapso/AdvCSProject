@@ -26,7 +26,7 @@ $("#register-btn").click(() => {
 		$("#myModal").modal("show");
 		return;
 	}
-	console.log("PASS ARE",pass,pass2);
+	console.log("PASS ARE", pass, pass2);
 	if (pass == "" || pass2 == "") {
 		console.log("Password field empty");
 		textModal.innerHTML = "Empty field";
@@ -71,11 +71,11 @@ $("#register-btn").click(() => {
 	})
 		.then((response) => {
 			if (response.status != 400) {
-				console.log( "SUCCESS");
-				window.location.replace('/login');
+				console.log("SUCCESS");
+				window.location.replace("/login");
 			} else {
 				headerModal.innerHTML = "ERROR:";
-				textModal.innerHTML = "Email taken"
+				textModal.innerHTML = "Email taken";
 			}
 			return response;
 		})
@@ -83,15 +83,11 @@ $("#register-btn").click(() => {
 			console.log("RESPONSE:", responseJson);
 			if (responseJson.redirected) {
 				window.location.replace(responseJson.url);
-			}
-			else
-				$("#myModal").modal("show");
+			} else $("#myModal").modal("show");
 		})
 		.catch((error) => {
 			console.log("ERRor", error);
 		});
-
-		
 });
 
 function ValidateEmail(mail) {
