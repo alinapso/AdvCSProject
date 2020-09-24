@@ -5,7 +5,7 @@ const Group = require("../Models/Group");
 const { Op } = require("sequelize");
 
 router.get("/", helper.checkAuthenticated, async (req, res) => {
-  const result = await Group.findAll({ where: { id: { [Op.gt]: 1 } } });
-  return res.json(result);
+	const result = await Group.findAll({ where: { id: { [Op.gt]: 1 } } });
+	return res.json(result);
 });
 module.exports = router;
