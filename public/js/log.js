@@ -1,19 +1,18 @@
-
 //remove input and input2 to cancal onEnter functionality and go back to onClick only
 var input = document.getElementById("inputEmail");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("sign_in").click();
-  }
+input.addEventListener("keyup", function (event) {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		document.getElementById("sign_in").click();
+	}
 });
 
 var input2 = document.getElementById("inputPassword");
-input2.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("sign_in").click();
-  }
+input2.addEventListener("keyup", function (event) {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		document.getElementById("sign_in").click();
+	}
 });
 
 $("#sign_in").click(() => {
@@ -48,43 +47,46 @@ $("#sign_in").click(() => {
 	});
 	console.log("type of body: ", typeof body1);
 
-
-    fetch("/login",{
-        method:"POST",
-        headers:{
-            "Content-Type": "application/json",
-        },
-        body:body1,
-    }).then((response)=>{
-        if(response.redirected){
-            window.location.replace(response.url);
-        }
-        return response;
-    }).then((response)=>{
-        if(response.status === 401){ //401 is returned by passport
-            fetch("/check", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: body1,
-            })
-                .then((response) => {
-                    console.log("RESPONSE",response);
-                    if (response.status === 400) { //returned by post /check
-                        headerModal.innerHTML = "ERROR:";
-                        textModal.innerHTML = "Email/password is incorrect"
-                        $("#myModal").modal("show");
-                    }
-                })
-                .catch((error) => {
-                    console.log("ERRorrr", error);
-                });
-        }
-
-    }).catch((error)=>{ console.log("Error2",error)});
-
-
+	fetch("/login", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: body1,
+	})
+		.then((response) => {
+			if (response.redirected) {
+				window.location.replace(response.url);
+			}
+			return response;
+		})
+		.then((response) => {
+			if (response.status === 401) {
+				//401 is returned by passport
+				fetch("/check", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: body1,
+				})
+					.then((response) => {
+						console.log("RESPONSE", response);
+						if (response.status === 400) {
+							//returned by post /check
+							headerModal.innerHTML = "ERROR:";
+							textModal.innerHTML = "Email/password is incorrect";
+							$("#myModal").modal("show");
+						}
+					})
+					.catch((error) => {
+						console.log("ERRorrr", error);
+					});
+			}
+		})
+		.catch((error) => {
+			console.log("Error2", error);
+		});
 });
 
 function ValidateEmail(mail) {
