@@ -69,10 +69,11 @@ router.post("/admin/workers/", helper.adminOnly, async (req, res) => {
 		}
 		try {
 			if (!(await User.findOne({ where: { email: req.body.email } }))) {
+				console.log(req.body);
 				User.create({
 					email: req.body.email,
 					password: req.body.password, //hashedPassword,
-					groupID: 1,
+					groupID: req.body.groupID,
 				});
 				console.log("SUCCSEFULLY ADDED NEW USER ");
 				return res.redirect("/admin/workers");

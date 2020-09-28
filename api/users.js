@@ -32,6 +32,8 @@ router.get("/workers", helper.checkAuthenticated, async (req, res) => {
 });
 
 router.post("/workers", helper.adminOnly, async (req, res) => {
+	console.log("add");
+	console.log(req.body);
 	if (!(req.body.email && req.body.password)) {
 		return res
 			.status(400)
@@ -41,6 +43,7 @@ router.post("/workers", helper.adminOnly, async (req, res) => {
 		const result = await User.insert({
 			email: req.body.email,
 			password: req.body.password,
+			groupID: req.body.groupID,
 		});
 		console.log(result);
 		return res.json(result);
