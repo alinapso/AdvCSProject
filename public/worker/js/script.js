@@ -14,8 +14,9 @@ fetch("/api/tasks/")
 		var listWorker = document.getElementById("taskList");
 		// eslint-disable-next-line no-undef
 		var listUnAssigned = document.getElementById("taskList2");
+		console.log(data);
 		for (let i = 0; i < data.length; i++) {
-			if (data[i].workerID === 0)
+			if (data[i].status === 0)
 				listWorker.innerHTML += createTaskUnAssigend(data[i]);
 			else {
 				listUnAssigned.innerHTML += createTaskWorker(data[i]);
