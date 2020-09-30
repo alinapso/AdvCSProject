@@ -7,6 +7,9 @@ var path = require("path");
 const User = require("../Models/User");
 const Group = require("../Models/Group");
 const { Op } = require("sequelize");
+
+const bcrypt = require("bcrypt");
+
 // const Task = require("../Models/Tasks");
 
 var appDir = path.dirname(require.main.filename) + "/public";
@@ -70,13 +73,15 @@ router.post("/admin/workers/", helper.adminOnly, async (req, res) => {
 		try {
 			if (!(await User.findOne({ where: { email: req.body.email } }))) {
 				console.log(req.body);
-				User.create({
-					email: req.body.email,
-					password: req.body.password, //hashedPassword,
-					groupID: req.body.groupID,
+				bcrypt.hash(req.body.password, 10, function (err, hash) {
+					User.create({
+						email: req.body.email,
+						password: hash, //hashedPassword,
+						groupID: req.body.groupID,
+					});
+					console.log("SUCCSEFULLY ADDED NEW USER ");
+					return res.redirect("/admin/workers");
 				});
-				console.log("SUCCSEFULLY ADDED NEW USER ");
-				return res.redirect("/admin/workers");
 			} else {
 				console.log("ERROR ADDING NEW USER: EMAIL TAKEN");
 				return res.sendStatus(400);

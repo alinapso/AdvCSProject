@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
-
-const sequelize = new Sequelize(process.env.JAWSDB_URL, {
+var dbConnection =
+	"mysql://ug1to2qz4ugqe986:u185d2t3f370kxg8@zpfp07ebhm2zgmrm.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/e1qzak9scht1u3aq";
+const sequelize = new Sequelize(process.env.JAWSDB_URL || dbConnection, {
 	pool: {
 		max: 5,
 		min: 0,
@@ -8,5 +9,5 @@ const sequelize = new Sequelize(process.env.JAWSDB_URL, {
 		idle: 10000,
 	},
 });
-//if you want to restart run in console "npm run resetdb"
+
 module.exports = sequelize;
